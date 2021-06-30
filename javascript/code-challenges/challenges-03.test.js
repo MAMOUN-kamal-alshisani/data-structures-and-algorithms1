@@ -29,9 +29,8 @@ For example, typeNum([1, 'bob' ,3]) returns [1,3].
 const typeNum =(arr) => {
   // Solution code here...
   let TArray=arr.filter(nim=>{
-    if(!'bob'(nim)){
-      return nim;
-    }
+   return (typeof nim==='number')
+    
   });
   return TArray;
   }
@@ -48,7 +47,10 @@ For example, containsAnd(['panda', 'ran', 'and']) returns ['panda', 'and'].
 
 const containsAnd = (arr) => {
     // Solution code here...
-    
+    let TArray=arr.filter(nim=>nim.includes('and'))
+    return TArray;
+
+
   };
 
 /* ------------------------------------------------------------------------------------------------
@@ -61,6 +63,10 @@ For example, oddValues([1,2,3]) returns [1,3].
 
 const oddValues = (arr) => {
   // Solution code here...
+  let TheArr=arr.filter(function(odd){
+    return (odd% 2)
+  })
+  return TheArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -73,6 +79,17 @@ For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 
 const notInFirstArray = (forbiddenValues, arr) => {
   // Solution code here...
+
+  //   let newarr=(forbiddenValues, arr).filter(function(val){
+  //     return (!forbiddenValues.includes(val)) 
+  //   })
+  //   return newarr;
+  // };
+  
+  let TheArr=(forbiddenValues, arr).filter(not=>{
+    return (!forbiddenValues.includes(not))
+  })
+  return TheArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
