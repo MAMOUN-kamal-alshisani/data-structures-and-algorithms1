@@ -137,10 +137,9 @@ let starWarsData = [{
 const returnNames = (arr) => {
   // Solution code here...
   let TheArr=[];
-  arr.reduce(val=>{
-TheArr.push[val.Name]
+  
 
-  },0)
+ 
   return TheArr;
 };
 
