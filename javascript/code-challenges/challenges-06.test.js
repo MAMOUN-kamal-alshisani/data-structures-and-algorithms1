@@ -27,7 +27,7 @@ const getNames = (arr) => {
   let TheArr=arr.map(l=>{
     return l.name.split("").reverse().join("");
   })
-  return TheArr
+  return TheArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
