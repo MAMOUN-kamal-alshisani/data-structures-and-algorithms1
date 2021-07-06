@@ -145,7 +145,7 @@ const gruffaloCrumble = {
 const listFoods = (recipe) => {
   let result = [];
   // Solution code here...
-  let TheArr=
+  let TheArr=[];
   return result;
 };
 
