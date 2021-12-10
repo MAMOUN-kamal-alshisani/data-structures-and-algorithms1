@@ -15,13 +15,11 @@ const screenForNames = (arr) => {
 let TheArr=arr.filter(ele=>{
 
 if( /^((Mr||Mrs||Dr||Ms).\s)[A-Z]/.test(ele)){
-  return ele
+  return ele;
 }
-
-
-})
-return TheArr
-}
+});
+return TheArr;
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -35,8 +33,8 @@ const toTitleCase = (arr) => {
   // Solution code here...
 
   let TheArr=arr.map(ele=>{
-    return ele.charAt(0).toUpperCase()+ele.slice(1)
-  })
+    return ele.charAt(0).toUpperCase()+ele.slice(1);
+  });
   return TheArr;
 };
 
@@ -116,6 +114,10 @@ let starWarsData = [{
 
 let biggerThanLuke = (arr) => {
   // Solution code here...
+  let Skywalker = arr.filter(item => item.name === 'Luke Skywalker');
+  let mass =arr.reduce((a,b)=> + b.mass > Skywalker[0].mass ? a.concat(b.name)  : a, []).join(' - ');
+
+  return mass;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -142,10 +144,10 @@ const sortBy = (property, arr) => {
     {
     return -1;
     }else{
-    return false
+    return false;
     }
     })
-    return TheArr
+    return TheArr;
 
 };
 
@@ -193,8 +195,30 @@ Here is a sample board:
 ];
 ------------------------------------------------------------------------------------------------ */
 
+const check = (c1ll, c2ll, c3ll) =>
+c1ll === '' ? false :
+c1ll !== c2ll ? false :
+c1ll !== c3ll ? false : true;
+
 const detectTicTacToeWin = (board) => {
   // Solution code here...
+
+  return (
+    // Code will take advantage of short-circuit evaluation to only
+    // call checkAt until win is found!
+  
+      // test rows
+      check(board[0][0], board[0][1], board[0][2]) ||
+      check(board[1][0], board[1][1], board[1][2]) ||
+      check(board[2][0], board[2][1], board[2][2]) ||
+      // test columns
+      check(board[0][0], board[1][0], board[2][0]) ||
+      check(board[0][1], board[1][1], board[2][1]) ||
+      check(board[0][2], board[1][2], board[2][2]) ||
+      // test diagonals
+      check(board[0][0], board[1][1], board[2][2]) ||
+      check(board[2][0], board[1][1], board[0][2])
+    );
 };
 
 /* ------------------------------------------------------------------------------------------------

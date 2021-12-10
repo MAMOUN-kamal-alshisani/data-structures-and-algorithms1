@@ -26,7 +26,6 @@ function transformToLis(obj){
 
 return `<li>${val.join(': ')}</li>`
 
-
   })
   return TheArr;
 }
@@ -43,11 +42,12 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 
 const count = (target, input) => {
   // Solution code here...
-  let Arr= input.reduce((a,b)=>
-  a+b.reduce((a,b)=> 
-  {if(b === target){a+1}
-  else{a}},0),0);
-  return Arr;
+  let count = 0;
+  input.flat().map(data=>{
+    if(data == target){++count};
+
+  });
+return count;
 };
 
 
@@ -81,6 +81,17 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 
 const divisibleByFiveTwoToThePower = (input) => {
   // Solution code here...
+  let array=[];
+  input.forEach((data,indx)=>{
+    array.push([]);
+    data.map(values=>{
+      if (typeof(values)==="number"&& values % 5 == 0 ) {
+        let power = Math.pow(2, values);
+        array[indx].push(power);
+      }
+    });
+  });
+  return array;
 };
 
 /* ------------------------------------------------------------------------------------------------
