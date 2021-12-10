@@ -10,12 +10,12 @@ Use `forEach` to loop over the input array and work with each value.  Push the n
 
 const addOne = (arr) => {
   // Solution code here...
-  let newArr=[];
-  arr.forEach(value => {
-    let newValue =value+1;
-    newArr.push(newValue);
-  });
-  return newArr;
+let Numbers =[];
+ 
+ arr.forEach(num => {
+   Numbers.push(num +1)
+ });
+ return Numbers;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -28,12 +28,14 @@ Use `forEach` to loop over the input array. Modify each string, and add the upda
 
 
 const addExclamation = (Arr) => {
-  let TheArr = [];
-  Arr.forEach(val => {
-    TheArr.push(val +'!');
-  // Solution code here...    
-    } )
-    return TheArr;
+
+let strings = [];
+
+Arr.forEach(str=>{
+
+  strings.push(str + '!')
+})
+return strings;
   };
  
 
@@ -46,12 +48,15 @@ Use `forEach` to loop over the input array. The modified strings should each be 
 ------------------------------------------------------------------------------------------------ */
 
 const allUpperCase = (arr) => {
-let TheArr=[];
-arr.forEach(val=>{TheArr.push(val.toUpperCase());
 
-})
-return TheArr;
   // Solution code here...
+  let str= [];
+arr.forEach(strings=>{
+
+  str.push(strings.toUpperCase());
+})
+return str;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -66,19 +71,22 @@ Use `forEach` to build a new array of strings, each string modified by the callb
 
 const greeting = (word) => {
   // Solution code here...
-  return word.toUpperCase()+'!'
-};
 
-const speaker = (words, callback) => {
-  // Solution code here...
-  let newArr=[];
-  words.forEach(val=>{
+  return word.toUpperCase() +'!';
+  }
 
-    let newValue = callback(val);
-    newArr.push(newValue);
-  })
-  return newArr;
-  };
+  const speaker = (value , cb)=>{
+
+
+    let strings =[];
+    value.forEach(val=> {
+      
+let newValue = cb(val)
+strings.push(newValue)
+
+    });
+    return strings;
+  }
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -97,18 +105,17 @@ Return the modified array.
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr, value) => {
-  arr.push(value);
-  // Solution code here...
+arr.push(value);
+ 
 };
+const addNumbers = (number ,arr ,times, cb)=>{
 
-const addNumbers = (num, arr, times, callback) => {
-  // Solution code here...
-  for (let i=0; i<times;i++){
-    callback(arr,num);
-  }
-  return arr;
-};
+for(let i =0 ; i<times ; i++){
 
+  cb(arr,number );
+}
+return arr;
+}
 /* ------------------------------------------------------------------------------------------------
 
 CHALLENGE 6
@@ -128,12 +135,20 @@ This function should use forEach to populate your grocery list based on the stor
 ------------------------------------------------------------------------------------------------ */
 
 const createList = (availableItems) => {
-  // Solution code here...
-  let TheArr=[];
-  availableItems.forEach(val=>{if(val.available==true){
-    TheArr.push(val.name)
-  }})
-  return TheArr;
+ 
+let array =[];
+
+availableItems.forEach(item=>{
+
+if(item.available == true){
+  array.push(item.name)
+}else{
+  return null;
+}
+
+
+})
+return array;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -152,6 +167,35 @@ Return the resulting output array.
 
 const fizzbuzz = (arr) => {
   // Solution code here...
+
+let array =[];
+ arr.forEach(numbers=>{
+  if(numbers %3 == 0 && numbers %5 == 0){
+    array.push("Fizz Buzz");
+// return "Fizz Buzz"
+    
+  }
+    else if(numbers %3 == 0){
+      // return "Fizz";
+      array.push("Fizz");
+    }
+    else if(numbers %5 == 0){
+      array.push("Buzz");
+      // return "Buzz";
+    }
+    else{array.push(numbers)}
+  
+// else{return numbers}
+    // return "Buzz";
+  // else if(numbers %3 == 0 && numbers %5 == 0){
+  //   array.push("Fizz Buzz");
+  //   // return "Fizz Buzz";
+  // }
+    
+
+})
+
+return array
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -205,7 +249,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
   test('It should print out messages or numbers', () => {
@@ -213,3 +257,28 @@ xdescribe('Testing challenge 7', () => {
     expect(fizzbuzz(inputs).length).toStrictEqual(16);
   });
 });
+
+
+
+
+// let numbers = [1,2,3,4,5,'s'];   
+// let array=[];     
+                                                                                                                                                                                                          
+//   numbers.map(nums=>{
+
+//     if(typeof nums != 'number'){
+//       array.push('N/A')
+//       }
+
+//       else if(nums %2 ==0){
+//   array.push('even');
+// }
+// else if(nums %2 !==0){
+
+//   array.push('odd');
+
+// }
+
+//   return array;
+//   })
+                                                                                                 
