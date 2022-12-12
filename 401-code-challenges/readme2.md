@@ -1,1 +1,0 @@
-![](insertarray.jpg)
