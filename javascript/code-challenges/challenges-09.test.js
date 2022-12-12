@@ -160,11 +160,18 @@ hasChildrenValues(characters, 'Sansa') will return false
 
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
-  let array = []
-  arr.map(data=>{
+  let returner;
+  arr.map((data) => {
+    if (data.name == character) {
+      if (data.children) {
+        returner = true;
+      } else {
+        returner = false;
+      }
+    }
+  });
 
-  })
-return array
+  return returner;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -177,8 +184,13 @@ The input and output of this function are the same as the input and output from 
 
 const hasChildrenEntries = (arr, character) => {
   // Solution code here...
-
-}
+  let obj = arr.filter((data) => data.name === character);
+  if (obj.length !== 0) {
+    return "children" in obj[0];
+  } else {
+    return false;
+  }
+};
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
 
@@ -186,9 +198,21 @@ Write a function named totalCharacters that takes in an array and returns the nu
 ------------------------------------------------------------------------------------------------ */
 
 const totalCharacters = (arr) => {
-let array = arr.forEach(data =>{
- console.log(data.children); 
-})
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    let childern = arr[i].children;
+    if (childern) {
+      count += childern.length;
+    }
+    if (arr[i].name) {
+      ++count;
+    }
+    if (arr[i].spouse) {
+      ++count;
+    }
+  }
+
+  return count;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -202,11 +226,36 @@ For example: [{ house: 'Stark', members: 7 }, { house: 'Arryn', members: 3 }, ..
 ------------------------------------------------------------------------------------------------ */
 
 const houseSize = (arr) => {
-  const sizes = [];
   // Solution code here...
-  return sizes;
-};
+// let array = []
+let array = []
+// let childern = 0
+let member = 0
+let houses = ''
+// let house = house[i]
+// let memebers
+// let obj = {}
 
+// for (let i = 0; i < arr.length; i++) {
+
+  
+// }
+for(let key of arr){
+  if(key.children){
+    member= key.children.length
+
+  }
+if(key.name && key.spouse){
+  member +=2
+}
+if(key.house != null && undefined){
+  houses = key.house 
+}
+  // console.log(key);
+array.push({house:key.house,members:member})
+}
+return array
+};
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 10 - Stretch Goal
 
@@ -227,6 +276,27 @@ const deceasedSpouses = ["Catelyn", "Lysa", "Robert", "Khal Drogo", "Alerie"];
 
 const houseSurvivors = (arr) => {
   const survivors = [];
+
+let member = 0
+let houses = ''
+
+for(let key of arr){
+  if(key.children){
+    member= key.children.length
+
+  }
+if(key.name){
+  member +=1
+}
+if(key.spouse !== null && key.spouse.includes(!deceasedSpouses)){
+  member +=1
+}
+if(key.house != null && undefined){
+  houses = key.house 
+}
+  // console.log(key);
+  survivors.push({house:key.house,members:member})
+}
   // Solution code here...
   return survivors;
 };
@@ -303,7 +373,7 @@ describe("Testing challenge 6", () => {
   });
 });
 
-xdescribe("Testing challenge 7", () => {
+describe("Testing challenge 7", () => {
   test("It should return true for characters that have children", () => {
     expect(hasChildrenEntries(characters, "Eddard")).toBeTruthy();
   });
@@ -319,7 +389,7 @@ describe("Testing challenge 8", () => {
   });
 });
 
-xdescribe("Testing challenge 9", () => {
+describe("Testing challenge 9", () => {
   test("It should return an object for each house containing the name and size", () => {
     expect(houseSize(characters)[1]).toStrictEqual({
       house: "Arryn",
@@ -329,7 +399,7 @@ xdescribe("Testing challenge 9", () => {
   });
 });
 
-xdescribe("Testing challenge 10", () => {
+describe("Testing challenge 10", () => {
   test("It should not include any deceased spouses", () => {
     expect(houseSurvivors(characters)[2]).toStrictEqual({
       house: "Lannister",
